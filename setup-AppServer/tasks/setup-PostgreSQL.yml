@@ -1,0 +1,22 @@
+#Setup DB
+
+- name: Install postgresql-server
+  yum:
+    name: postgresql-server
+    state: latest
+- name: Install postgresql-contrib
+  yum:
+    name: ppostgresql-contrib
+    state: latest
+- name: initialize DB
+  command: postgresql-setup initdb
+  become: yes
+  become_user: root
+- name: start DB
+  command: systemctl start postgresql
+  become: yes
+  become_user: root
+- name: enable DB
+  command: systemctl enable postgresql
+  become: yes
+  become_user: root

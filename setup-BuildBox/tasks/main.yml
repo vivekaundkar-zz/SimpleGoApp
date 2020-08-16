@@ -1,0 +1,3 @@
+---
+# tasks file for install-apigee
+- include_tasks: setup-component.yml

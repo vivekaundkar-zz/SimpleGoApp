@@ -1,0 +1,3 @@
+---
+# vars file for setup-BuildBox
+Ansible_ssh_key: "/home/centos/.ssh/Ansible-Controller.pem"

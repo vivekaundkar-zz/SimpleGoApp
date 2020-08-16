@@ -1,0 +1,3 @@
+---
+# tasks file for build-GoApp
+- include_tasks: build-App.yml

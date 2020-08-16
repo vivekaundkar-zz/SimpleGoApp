@@ -1,0 +1,20 @@
+#Deploy GO APP
+
+- name: GET application artefacts
+  aws_s3:
+    bucket: AppBinaries
+    object: /App/GO/goApp.tar.gz
+    dest: ./goApp.tar.gz
+    mode: get
+- name: untar application artefacts
+  command: tar -C ./appDeployment -xzf goApp.tar.gz
+  become: yes
+  become_user: root
+- name: update DB
+  command: ./appDeployment/TechChallengeApp updatedb
+  become: yes
+  become_user: root
+- name: start application
+  command: ./appDeployment/TechChallengeApp serve
+  become: yes
+  become_user: root

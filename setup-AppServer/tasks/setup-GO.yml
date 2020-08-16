@@ -1,0 +1,18 @@
+#Setup Apigee Component
+
+- name: Install WGET
+  yum:
+    name: wget
+    state: latest
+- name: download GO installer
+  command: wget https://golang.org/dl/go1.15.linux-amd64.tar.gz
+  become: yes
+  become_user: root
+- name: untar GO installer
+  command: tar -C /usr/local -xzf go1.15.linux-amd64.tar.gz
+  become: yes
+  become_user: root
+- name: Setup GO path
+  command: export PATH=$PATH:/usr/local/go/bin
+  become: yes
+  become_user: root

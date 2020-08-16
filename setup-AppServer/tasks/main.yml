@@ -1,0 +1,4 @@
+---
+# tasks file
+- include_tasks: setup-GO.yml
+- include_tasks: setup-PostgreSQL.yml

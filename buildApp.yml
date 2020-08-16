@@ -1,0 +1,11 @@
+---
+  - name: Build application on "{{ node_filter }}" Nodes
+    hosts: "{{ node_filter }}"
+    gather_facts: false
+    vars:
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no -i {{ Ansible_ssh_key }}'
+    remote_user: centos
+    become: true
+    become_method: sudo
+    roles:
+     - { role: build-GoApp }   

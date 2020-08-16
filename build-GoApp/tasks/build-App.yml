@@ -1,0 +1,20 @@
+#Build GO APP
+
+- name: download code
+  command: git clone git@github.com:servian/TechChallengeApp.git
+  become: yes
+  become_user: root
+- name: Build code
+  command: ./TechChallengeApp/build.sh
+  become: yes
+  become_user: root
+- name: Zip build artefact
+  command: tar -zcvf goApp.tar.gz ./dist
+  become: yes
+  become_user: root
+- name: push code to S3 bucket
+  aws_s3:
+    bucket: AppBinaries
+    object: /App/GO/goApp.tar.gz
+    src: ./goApp.tar.gz
+    mode: put
